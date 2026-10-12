@@ -1,0 +1,19 @@
+deptrac:
+  paths:
+    - ./src
+  exclude_files:
+    - '#.*/tests?/.*#'
+    - '#.*/vendor/.*#'
+  layers:
+    - name: PhpUnitTestReporter
+      collectors:
+        - type: directory
+          value: src/PhpUnit/TestReporter/.*
+    - name: Shared
+      collectors:
+        - type: directory
+          value: src/Shared/.*
+  ruleset:
+    PhpUnitTestReporter:
+      - Shared
+    Shared: ~
